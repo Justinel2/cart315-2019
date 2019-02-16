@@ -6,8 +6,8 @@ public class BallBehavior : MonoBehaviour {
 
 	public Rigidbody rb;
 	public Vector3 antiGravity = new Vector3(0,1,0);
-	public Vector3 currentLeft = new Vector3(-1,1/2,0);
-	public Vector3 currentRight = new Vector3(1,1/2,0);
+	public Vector3 currentLeft = new Vector3(-1.0f,1/2f,0.0f);
+	public Vector3 currentRight = new Vector3(1.0f,1/2f,0.0f);
 
 	// Use this for initialization
 	void Start () {
