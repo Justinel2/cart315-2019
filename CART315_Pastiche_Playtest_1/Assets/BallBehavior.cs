@@ -5,32 +5,18 @@ using UnityEngine;
 public class BallBehavior : MonoBehaviour {
 
 	public Rigidbody rb;
-	public Vector3 antiGravity = new Vector3(0,1,0);
-	public Vector3 currentLeft = new Vector3(-1.0f,1/2f,0.0f);
-	public Vector3 currentRight = new Vector3(1.0f,1/2f,0.0f);
+	public Vector3 velocity; 
+//	public Vector3 current = new Vector3 (1, 0, 0);
+//	public float middleY = 0f;
+//	public float maxMiddleY = 2f;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		velocity = new Vector3 (Random.Range (-1.0f, 1.0f), 1.0f, 0.0f);
 	}
-	
 	// Update is called once per frame
 	void Update () {
-
-		if (transform.position.y <= 0) {
-			rb.useGravity = false;
-			rb.velocity = antiGravity;
-		}
-		if (transform.position.y > 0 && transform.position.y <= 1.5) {
-			rb.useGravity = false;
-			if (transform.position.x < 0) {
-				rb.velocity = currentLeft;
-			} else {
-				rb.velocity = currentRight;
-			}
-		} 
-		if (transform.position.y > 1.5) {
-			rb.useGravity = true;
-		}
+		rb.velocity = new Vector3 (velocity.x + Random.Range (-1.0f, 1.0f), velocity.y, velocity.z);
 	}
 }
