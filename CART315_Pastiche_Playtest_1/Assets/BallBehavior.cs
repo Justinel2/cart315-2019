@@ -8,7 +8,7 @@ public class BallBehavior : MonoBehaviour {
 	public SphereCollider postSCollider;
 	public GameObject postSynaptic;
 	private Vector3 velocity, exitVelocity; 
-	private float ballRadius, postSRadius, postSAura, distance, totalRadius;
+	private float speed, ballRadius, postSRadius, postSAura, distance, totalRadius;
 
 	// Use this for initialization
 	void Start () {
@@ -26,13 +26,13 @@ public class BallBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		
-		rb.velocity = new Vector3 (velocity.x + Random.Range (-1.0f, 1.0f), velocity.y, velocity.z);
+		speed = Random.Range(0.5f, 1.5f);
+		rb.velocity = new Vector3 (velocity.x + Random.Range (-1.0f, 1.0f), velocity.y, velocity.z) * speed;
+
 		distance = Vector3.Distance(transform.position, postSynaptic.transform.position);
-		print (postSynaptic.transform.position);
 		postSAura = Random.Range (-2.0f,0.2f);
 
 		if (distance <= totalRadius + postSAura) {
-			print ("yepyep");
 			if (transform.position.x <= 0) {
 				rb.velocity = new Vector3 (-exitVelocity.x,exitVelocity.y,exitVelocity.z);
 			}
