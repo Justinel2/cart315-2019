@@ -16,6 +16,8 @@ public class BallBehavior : MonoBehaviour {
 	private Vector3 entranceVelocity, velocity, exitVelocity; 
 	// Different float values
 	private float speed, ballRadius, channelSHeight, postSRadius, postSAura, distance, totalRadius;
+	private bool touchedByFlipper;
+	public Collision collision;
 
 	// Start()
 	//
@@ -48,6 +50,12 @@ public class BallBehavior : MonoBehaviour {
 		// Define the default speed
 		speed = 1;
 
+		// Define the starting state of the neurotransmitter to untouched by a flipper
+		touchedByFlipper = false;
+
+		// Define the default gravity to be false
+		rb.useGravity = false;
+
 	}
 
 	// Update()
@@ -55,9 +63,15 @@ public class BallBehavior : MonoBehaviour {
 	// Update is called once per frame
 	//
 	void Update () {
-//		// Call functions
+		// Call functions
 		calculateDistanceBallToPostS();
-		handleBallMovements ();
+		checkFlipperCollision ();
+		if (!touchedByFlipper) {
+			handleBallMovements ();
+		}
+		if (touchedByFlipper) {
+			handleFlipperCollision ();
+		}
 	}
 
 	// calculateDistanceBallToPostS
@@ -72,6 +86,12 @@ public class BallBehavior : MonoBehaviour {
 		postSAura = Random.Range (-2.0f,0.2f);
 	}
 
+	void checkFlipperCollision() {
+		if (collision.gameObject.name == "flipper") {
+			touchedByFlipper = true;
+		}
+	}
+
 	// handleBallMovements()
 	//
 	// Function that calculates the velocity and speed of each ball/neurotransmitter according
@@ -79,7 +99,7 @@ public class BallBehavior : MonoBehaviour {
 	//
 	void handleBallMovements () {
 		// if the neurotransmitter y position is less or equal to the channel + 1 
-		// (or if the neurotransmitter just got generated from the channel)
+		// (if the neurotransmitter just got generated from the channel)
 		if (transform.position.y <= channelSerotonin.transform.position.y + channelSHeight) {
 			// double the value of the speed
 			speed = 2;
@@ -89,7 +109,7 @@ public class BallBehavior : MonoBehaviour {
 			rb.velocity = entranceVelocity * speed;
 		}
 		// if the neurotransmitter y position is more than the channel + 1
-		// (or if the neurotransmitter is well in the synapse)
+		// (if the neurotransmitter is well in the synapse)
 		if (transform.position.y > channelSerotonin.transform.position.y + channelSHeight) {
 			// enable the channel collider
 			channelSerotonin.GetComponent<CapsuleCollider> ().enabled = true;
@@ -111,6 +131,10 @@ public class BallBehavior : MonoBehaviour {
 				rb.velocity = exitVelocity;
 			}
 		}
+	}
+
+		void handleFlipperCollision () {
+			
 	}
 
 

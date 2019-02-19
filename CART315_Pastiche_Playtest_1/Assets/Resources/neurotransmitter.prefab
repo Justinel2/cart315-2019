@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114156011165160326}
   m_Layer: 0
   m_Name: neurotransmitter
-  m_TagString: Untagged
+  m_TagString: Flipper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868f26c6e4f794d5ab3f26a1ae0b57ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  postSynaptic: {fileID: 0}
+  channelSerotonin: {fileID: 0}
   rb: {fileID: 0}
   postSCollider: {fileID: 0}
-  postSynaptic: {fileID: 0}
+  channelSCollider: {fileID: 0}
 --- !u!135 &135459734025835424
 SphereCollider:
   m_ObjectHideFlags: 1
