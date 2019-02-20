@@ -17,7 +17,7 @@ public class BallBehavior : MonoBehaviour {
 	// Different float values
 	private float speed, ballRadius, channelSHeight, postSRadius, postSAura, distance, totalRadius;
 	private bool touchedByFlipper;
-	public Collision collision;
+//	private Collision collision;
 
 	// Start()
 	//
@@ -65,10 +65,11 @@ public class BallBehavior : MonoBehaviour {
 	void Update () {
 		// Call functions
 		calculateDistanceBallToPostS();
-		checkFlipperCollision ();
+		// If the flipper has not yet touched the neurotransmitter
 		if (!touchedByFlipper) {
 			handleBallMovements ();
 		}
+		// If the flipper has touched the neurotransmitter
 		if (touchedByFlipper) {
 			handleFlipperCollision ();
 		}
@@ -86,8 +87,8 @@ public class BallBehavior : MonoBehaviour {
 		postSAura = Random.Range (-2.0f,0.2f);
 	}
 
-	void checkFlipperCollision() {
-		if (collision.gameObject.name == "flipper") {
+	void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.tag == "Flipper") {
 			touchedByFlipper = true;
 		}
 	}
@@ -134,7 +135,8 @@ public class BallBehavior : MonoBehaviour {
 	}
 
 		void handleFlipperCollision () {
-			
+		// Define the gravity to be true
+		rb.useGravity = true;
 	}
 
 
