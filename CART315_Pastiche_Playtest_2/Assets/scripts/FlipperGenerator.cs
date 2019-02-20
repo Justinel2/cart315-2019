@@ -11,6 +11,9 @@ public class FlipperGenerator : MonoBehaviour {
 	public GameObject rightFlipper;
 	public GameObject channel;
 
+	private Vector3 startPoint;
+	private Vector3 endPoint;
+
 	// Use this for initialization
 	void Start () {
 		// Load the prefabs as a game objects
@@ -27,15 +30,19 @@ public class FlipperGenerator : MonoBehaviour {
 
 		if (Physics.Raycast (ray, out hit)) {
 
+			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+				startPoint = Input.mousePosition;
+			}
 			if (Input.GetKeyUp (KeyCode.Mouse0)) {
-				if (hit.point.x <= 0) {
+				endPoint = Input.mousePosition;
+				Debug.DrawLine (startPoint, endPoint, Color.red);
+				if (startPoint.x < endPoint.x) {
 					GameObject obj = Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.identity) as GameObject;
 				}
-				if (hit.point.x > 0) {
+				if (startPoint.x > endPoint.x) {
 					GameObject obj = Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.identity) as GameObject;
 				}
 			}
 		}
 	}
 }
-
