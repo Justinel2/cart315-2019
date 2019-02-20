@@ -17,7 +17,6 @@ public class BallBehavior : MonoBehaviour {
 	// Different float values
 	private float speed, ballRadius, channelSHeight, postSRadius, postSAura, distance, totalRadius;
 	private bool touchedByFlipper;
-//	private Collision collision;
 
 	// Start()
 	//
@@ -87,6 +86,10 @@ public class BallBehavior : MonoBehaviour {
 		postSAura = Random.Range (-2.0f,0.2f);
 	}
 
+	// OnCollisionEnter(collision)
+	//
+	// A function that verifies if the ball collided with a flipper
+	//
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Flipper") {
 			touchedByFlipper = true;
@@ -133,8 +136,11 @@ public class BallBehavior : MonoBehaviour {
 			}
 		}
 	}
-
-		void handleFlipperCollision () {
+	// handleFlipperCollision()
+	//
+	// A function that adds gravity to the balls that have been in contact with a flipper
+	//
+	void handleFlipperCollision () {
 		// Define the gravity to be true
 		rb.useGravity = true;
 	}

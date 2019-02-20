@@ -8,7 +8,7 @@ public class FlipperBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		Rigidbody rb = GetComponent<Rigidbody> ();
+//		BoxCollider bc = GetComponent<BoxCollider>();
 		HingeJoint hinge = GetComponent<HingeJoint>();
 
 		JointLimits limits = hinge.limits;
@@ -24,9 +24,11 @@ public class FlipperBehavior : MonoBehaviour {
 	void Update () {
 		if (Input.GetButton(button)) {
 			this.GetComponent<HingeJoint>().useMotor = true;
+			GetComponent<BoxCollider>().enabled = true;
 		}
 		if (!Input.GetButton(button)) {
 			this.GetComponent<HingeJoint>().useMotor = false;
+			GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }
