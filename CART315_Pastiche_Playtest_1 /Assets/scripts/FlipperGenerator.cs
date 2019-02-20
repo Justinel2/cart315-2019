@@ -9,12 +9,15 @@ public class FlipperGenerator : MonoBehaviour {
 	// Declare the game object neurotransmitter variable
 	public GameObject leftFlipper;
 	public GameObject rightFlipper;
+	public GameObject channel;
 
 	// Use this for initialization
 	void Start () {
-		// Load the prefabs "neurotransmitter" as a game object
+		// Load the prefabs as a game objects
 		leftFlipper = Resources.Load ("left_flipper") as GameObject;
 		rightFlipper = Resources.Load ("right_flipper") as GameObject;
+
+		channel = GameObject.Find("channel_serotonin");
 	}
 
 	// Update is called once per frame
@@ -24,12 +27,12 @@ public class FlipperGenerator : MonoBehaviour {
 
 		if (Physics.Raycast (ray, out hit)) {
 
-			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Input.GetKeyUp (KeyCode.Mouse0)) {
 				if (hit.point.x <= 0) {
-					GameObject obj = Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, hit.point.z), Quaternion.identity) as GameObject;
+					GameObject obj = Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.identity) as GameObject;
 				}
 				if (hit.point.x > 0) {
-					GameObject obj = Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, hit.point.z), Quaternion.identity) as GameObject;
+					GameObject obj = Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.identity) as GameObject;
 				}
 			}
 		}
