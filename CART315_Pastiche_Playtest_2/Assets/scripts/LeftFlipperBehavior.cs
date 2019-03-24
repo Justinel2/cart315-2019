@@ -13,10 +13,10 @@ public class LeftFlipperBehavior : MonoBehaviour {
 		HingeJoint hinge = GetComponent<HingeJoint>();
 		// The hinge limits
 		JointLimits limits = hinge.limits;
-		limits.min = -60;
+//		limits.min = -60;
 		limits.bounciness = 0.02f;
 		limits.bounceMinVelocity = 0;
-		limits.max = 0;
+//		limits.max = 0;
 		hinge.limits = limits;
 	}
 
