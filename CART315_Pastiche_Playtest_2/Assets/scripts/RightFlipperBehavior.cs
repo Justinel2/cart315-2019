@@ -13,10 +13,8 @@ public class RightFlipperBehavior : MonoBehaviour {
 		HingeJoint hinge = GetComponent<HingeJoint>();
 		// The hinge limits
 		JointLimits limits = hinge.limits;
-		limits.min = 0;
 		limits.bounciness = 0.02f;
 		limits.bounceMinVelocity = 0;
-		limits.max = 60;
 		hinge.limits = limits;
 	}
 
