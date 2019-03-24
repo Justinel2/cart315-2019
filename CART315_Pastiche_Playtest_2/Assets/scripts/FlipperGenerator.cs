@@ -49,17 +49,16 @@ public class FlipperGenerator : MonoBehaviour {
 				float angle = Vector3.Angle(direction, angleReference);
 				print (angle);
 
-				if (angle < 90) {
-					limitMinAngle = -90;
-					limitMaxAngle = 0;
-				}
-				if (angle >= 90) {
-					angle = -angle;
-					limitMinAngle = 0;
-					limitMaxAngle = 90;
-				}
-
 				if (startPoint.x < endPoint.x) {
+					if (angle < 90) {
+						limitMinAngle = -90;
+						limitMaxAngle = 0;
+					}
+					if (angle >= 90) {
+						angle = -angle;
+						limitMinAngle = 0;
+						limitMaxAngle = 90;
+					}
 					GameObject obj = Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z),   Quaternion.Euler(0, 0, angle)) as GameObject;
 					HingeJoint hj = obj.GetComponent<HingeJoint>();
 					JointLimits limits = hj.limits;
