@@ -21,7 +21,7 @@ public class LeftFlipperBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// If the space bar is down
-		if (Input.GetButton(button)) {
+		if (Input.GetButton(button) && this.tag == "Active") {
 			// Activate the flipper motor and activate the gravity
 			this.GetComponent<HingeJoint>().useMotor = true;
 			// Add gravity

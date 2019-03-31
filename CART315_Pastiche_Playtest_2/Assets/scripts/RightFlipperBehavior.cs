@@ -28,7 +28,7 @@ public class RightFlipperBehavior : MonoBehaviour {
 			GetComponent<BoxCollider>().enabled = true;
 		}
 		// If the space bar is up
-		if (!Input.GetButton(button)) {
+		if (!Input.GetButton(button) && this.tag == "Active") {
 			// Deactivate the flipper motor
 			this.GetComponent<HingeJoint>().useMotor = false;
 			// Remove gravity
