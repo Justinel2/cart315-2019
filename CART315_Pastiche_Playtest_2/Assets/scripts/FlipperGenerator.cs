@@ -21,7 +21,12 @@ public class FlipperGenerator : MonoBehaviour {
 
 	List <GameObject> flippersList;
 	int amountFlippers = -1; 
+	int indexSelected;
 
+	// Button to toggle the flippers to the left (left arrow) 
+	public string toggleLeft = "Left";
+	// Button to toggle the flippers to the right (right arrow) 
+	public string toggleRight = "Right";
 
 	// Use this for initialization
 	void Start () {
@@ -80,7 +85,30 @@ public class FlipperGenerator : MonoBehaviour {
 					flippersList.Add((GameObject)Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.Euler(0,0, angle)));
 					amountFlippers++;
 				}
+				indexSelected = amountFlippers;
+				ResetActive (indexSelected);
 			}
+				
+	
+			// If the left arrow button is down
+			if (Input.GetButtonUp(toggleLeft) && indexSelected > 0) {
+				indexSelected--;
+				ResetActive (indexSelected);
+				print (indexSelected);
+			}
+			// If the right arrow button is down
+			if (Input.GetButtonUp(toggleRight) && indexSelected < amountFlippers) {
+				indexSelected++;
+				ResetActive (indexSelected);
+				print (indexSelected);
+			}
+		}			
+	}
+
+	void ResetActive(int iSelected) {
+		for (int i = 0; i <= amountFlippers; i++) {
+			flippersList[i].tag = "Untagged";
 		}
+		flippersList[iSelected].tag = "Active";
 	}
 }
