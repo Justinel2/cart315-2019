@@ -70,8 +70,17 @@ public class BallBehavior : MonoBehaviour {
 		}
 		// If the flipper has touched the neurotransmitter
 		if (touchedByFlipper) {
-			handleFlipperCollision ();
+			if (rb.velocity.y > 0){
+				// Add gravity
+				rb.useGravity = true;
+			}
+			if (rb.velocity.y <= 0) {
+				// Remove gravity
+				rb.useGravity = false;
+				handleBallMovements ();
+			}
 		}
+		print (velocity);
 	}
 
 	// calculateDistanceBallToPostS
@@ -91,7 +100,7 @@ public class BallBehavior : MonoBehaviour {
 	// A function that verifies if the ball collided with a flipper
 	//
 	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Flipper") {
+		if (collision.gameObject.tag == "Active") {
 			touchedByFlipper = true;
 		}
 	}
@@ -141,9 +150,16 @@ public class BallBehavior : MonoBehaviour {
 	// A function that adds gravity to the balls that have been in contact with a flipper
 	//
 	void handleFlipperCollision () {
-		// Define the gravity to be true
-		rb.useGravity = true;
+//		float previousYValue = transform.position.y;
+//
+//		if (transform.position.y >= previousYValue){
+//			// Add gravity
+//			rb.useGravity = true;
+//		}
+//		if (transform.position.y < previousYValue) {
+//			// Remove gravity
+//			rb.useGravity = false;
+//		}
+//		previousYValue = transform.position.y;
 	}
-
-
 }
