@@ -1,0 +1,146 @@
+# Blender MTL File: 'campfire.blend'
+# Material Count: 14
+
+newmtl Material.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.128339 0.610473
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl barrier
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl freetree.000
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd textures/freetree.dds
+map_d textures/freetree.dds
+
+newmtl grassblades01.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd textures/grassblades01.dds
+map_d textures/grassblades01.dds
+
+newmtl ground.000
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures/sc01_lightmap_ao.png
+map_Bump textures/IMG_2688.dds
+
+newmtl hdri
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.345206 0.422311 0.447680
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 0
+map_Kd textures/sky_cloudy_toned.jpg
+
+newmtl light
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.232092 0.486010
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_d textures/smoke.png
+
+newmtl pine01.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.083016 0.196956 0.074807
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd textures/pinetree02.dds
+map_d textures/pinetree02.dds
+
+newmtl player
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 0
+map_Kd Untitled
+
+newmtl rock.003
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.061983 0.061983 0.061983
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump textures/IMG_2692.dds
+map_Kd textures/IMG_2692.dds
+map_Ks textures/IMG_2692.dds
+
+newmtl smoke
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 3.963077 0.685143 0.343109
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 0
+map_d textures/smoke.png
+
+newmtl tree
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures/Pine_bark.dds
+
+newmtl tree_trunk.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd textures/Pine_bark.dds
+map_Bump textures/Pine_bark.dds
+map_Ks textures/Pine_bark.dds

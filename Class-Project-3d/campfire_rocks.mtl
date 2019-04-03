@@ -1,0 +1,14 @@
+# Blender MTL File: 'campfire.blend'
+# Material Count: 1
+
+newmtl rock.003
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.061983 0.061983 0.061983
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump textures/IMG_2692.dds
+map_Kd textures/IMG_2692.dds
+map_Ks textures/IMG_2692.dds

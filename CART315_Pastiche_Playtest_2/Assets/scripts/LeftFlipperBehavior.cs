@@ -35,8 +35,6 @@ public class LeftFlipperBehavior : MonoBehaviour {
 		if (!Input.GetButton(button)) {
 			// Deactivate the flipper motor
 			this.GetComponent<HingeJoint>().useMotor = false;
-//			// Remove gravity
-//			GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }

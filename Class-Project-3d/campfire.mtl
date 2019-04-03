@@ -1,0 +1,26 @@
+# Blender MTL File: 'campfire.blend'
+# Material Count: 2
+
+newmtl rock.003
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.061983 0.061983 0.061983
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/IMG_2692.dds
+map_Kd wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/IMG_2692.dds
+map_Ks wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/IMG_2692.dds
+
+newmtl tree_trunk.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/Pine_bark.dds
+map_Bump wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/Pine_bark.dds
+map_Ks wetransfer-a9cf19/74844_Campfire_in_Woods_BGE/textures/Pine_bark.dds
