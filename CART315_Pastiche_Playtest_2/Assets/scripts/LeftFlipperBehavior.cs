@@ -21,13 +21,13 @@ public class LeftFlipperBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// Add gravity
+		// Add collider
 		GetComponent<BoxCollider>().enabled = true;
 
 		// If the flipper is tagged "Active"
 		if (this.tag == "Active") {
 			// If the space bar is down
-			if (Input.GetButton(button) && this.tag == "Active") {
+			if (Input.GetButton(button)) {
 				// Activate the flipper motor and activate the gravity
 				this.GetComponent<HingeJoint>().useMotor = true;
 			}

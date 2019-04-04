@@ -20,19 +20,22 @@ public class RightFlipperBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// If the space bar is down
-		if (Input.GetButton(button)) {
-			// Activate the flipper motor and activate the gravity
-			this.GetComponent<HingeJoint>().useMotor = true;
-			// Add gravity
-			GetComponent<BoxCollider>().enabled = true;
+
+		// Add collider
+		GetComponent<BoxCollider>().enabled = true;
+
+		// If the flipper is tagged "Active"
+		if (this.tag == "Active") {
+			// If the space bar is down
+			if (Input.GetButton(button)) {
+				// Activate the flipper motor and activate the gravity
+				this.GetComponent<HingeJoint>().useMotor = true;
+			}
 		}
 		// If the space bar is up
-		if (!Input.GetButton(button) && this.tag == "Active") {
+		if (!Input.GetButton(button)) {
 			// Deactivate the flipper motor
 			this.GetComponent<HingeJoint>().useMotor = false;
-			// Remove gravity
-			GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }
