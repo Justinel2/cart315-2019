@@ -13,7 +13,7 @@ public class BallBehavior : MonoBehaviour {
 	public SphereCollider postSCollider;
 	public CapsuleCollider channelSCollider;
 	// Different velocities
-	private Vector3 entranceVelocity, velocity, exitVelocity; 
+	private Vector3 entranceVelocity, velocity, exitVelocity, controlledVelocity, nullVelocity; 
 	// Different float values
 	private float speed, ballRadius, channelSHeight, postSRadius, postSAura, distance, totalRadius;
 	private bool touchedByFlipper;
@@ -45,6 +45,8 @@ public class BallBehavior : MonoBehaviour {
 		entranceVelocity = new Vector3 (0.0f,1.0f,0.0f);
 		velocity = new Vector3 (Random.Range (-1.5f, 1.5f), 1.0f, 0.0f);
 		exitVelocity = new Vector3 (2.0f, 1.0f, 0.0f);
+		controlledVelocity = new Vector3 (0.0f, 1.0f, 0.0f);
+		nullVelocity = new Vector3 (0.0f, 0.0f, 0.0f);
 
 		// Define the default speed
 		speed = 1;
@@ -70,17 +72,17 @@ public class BallBehavior : MonoBehaviour {
 		}
 		// If the flipper has touched the neurotransmitter
 		if (touchedByFlipper) {
-			if (rb.velocity.y > 0){
-				// Add gravity
-				rb.useGravity = true;
-			}
-			if (rb.velocity.y <= 0) {
+//			// If velocity is going negative (the )
+//			if (rb.velocity.y <= 0) {
 				// Remove gravity
 				rb.useGravity = false;
+				rb.velocity = controlledVelocity;
+//			}
+			if (rb.velocity == nullVelocity) {
 				handleBallMovements ();
 			}
 		}
-		print (velocity);
+		print (rb.velocity);
 	}
 
 	// calculateDistanceBallToPostS
@@ -102,13 +104,17 @@ public class BallBehavior : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Active") {
 			touchedByFlipper = true;
+			//Add gravity
+			rb.useGravity = true;
+			Physics.IgnoreCollision(postSynaptic.GetComponent<Collider>(), GetComponent<Collider>());
+			controlledVelocity = rb.velocity;
 		}
 	}
 
 	// handleBallMovements()
 	//
 	// Function that calculates the velocity and speed of each ball/neurotransmitter according
-	// to its position
+	// to its position when the ball is automatically moved (has not been touched by flipper)
 	//
 	void handleBallMovements () {
 		// if the neurotransmitter y position is less or equal to the channel + 1 
@@ -144,22 +150,5 @@ public class BallBehavior : MonoBehaviour {
 				rb.velocity = exitVelocity;
 			}
 		}
-	}
-	// handleFlipperCollision()
-	//
-	// A function that adds gravity to the balls that have been in contact with a flipper
-	//
-	void handleFlipperCollision () {
-//		float previousYValue = transform.position.y;
-//
-//		if (transform.position.y >= previousYValue){
-//			// Add gravity
-//			rb.useGravity = true;
-//		}
-//		if (transform.position.y < previousYValue) {
-//			// Remove gravity
-//			rb.useGravity = false;
-//		}
-//		previousYValue = transform.position.y;
 	}
 }

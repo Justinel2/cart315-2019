@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightFlipperBehavior : MonoBehaviour {
+public class FlipperBehavior : MonoBehaviour {
 
 	// Button to control the flipper (space) 
 	public string button = "Flipper";
@@ -10,8 +10,9 @@ public class RightFlipperBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
 		stateColor = GetComponent<Renderer>().material;
+
 		// The hinge joint associated with the flipper
 		HingeJoint hinge = GetComponent<HingeJoint>();
 		// The hinge limits
