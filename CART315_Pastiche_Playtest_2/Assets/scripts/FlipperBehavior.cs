@@ -5,7 +5,8 @@ using UnityEngine;
 public class FlipperBehavior : MonoBehaviour {
 
 	// Button to control the flipper (space) 
-	public string button = "Flipper";
+	public string buttonGenerate = "Flipper";
+	public string buttonDelete = "Delete";
 	Material stateColor;
 
 	// Use this for initialization
@@ -33,16 +34,20 @@ public class FlipperBehavior : MonoBehaviour {
 			// Change the color to red
 			stateColor.color = Color.red;
 			// If the space bar is down
-			if (Input.GetButton(button)) {
+			if (Input.GetButton(buttonGenerate)) {
 				// Activate the flipper motor and activate the gravity
 				this.GetComponent<HingeJoint>().useMotor = true;
+			}
+			if (Input.GetButtonDown(buttonDelete)) {
+				print ("loop entered");
+				Destroy (gameObject);
 			}
 		}
 		if (this.tag != "Active") {
 			stateColor.color = Color.white;
 		}
 		// If the space bar is up
-		if (!Input.GetButton(button)) {
+		if (!Input.GetButton(buttonGenerate)) {
 			// Deactivate the flipper motor
 			this.GetComponent<HingeJoint>().useMotor = false;
 		}

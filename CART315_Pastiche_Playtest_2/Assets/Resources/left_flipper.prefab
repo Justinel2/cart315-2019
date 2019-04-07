@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23026834705249980}
   - component: {fileID: 54515438360897130}
   - component: {fileID: 59994821033764458}
-  - component: {fileID: 114687828112572510}
+  - component: {fileID: 114872108486582714}
   m_Layer: 0
   m_Name: left_flipper
   m_TagString: Flipper
@@ -147,7 +147,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114687828112572510
+--- !u!114 &114872108486582714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1409709322451922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3dba26df6064cafb93b36ad5b03358, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e2303ed47f924cf4a7ff7bbbc792190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: Flipper

@@ -18,6 +18,9 @@ public class BallBehavior : MonoBehaviour {
 	private float speed, ballRadius, channelSHeight, postSRadius, postSAura, distance, totalRadius;
 	private bool touchedByFlipper;
 
+	// Button to control the flipper (space) 
+	public string button = "Flipper";
+
 	// Start()
 	//
 	// Use this for initialization
@@ -82,7 +85,7 @@ public class BallBehavior : MonoBehaviour {
 				handleBallMovements ();
 			}
 		}
-		print (rb.velocity);
+//		print (rb.velocity);
 	}
 
 	// calculateDistanceBallToPostS
