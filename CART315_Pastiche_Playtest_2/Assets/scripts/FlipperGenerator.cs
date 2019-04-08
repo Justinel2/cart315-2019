@@ -31,6 +31,8 @@ public class FlipperGenerator : MonoBehaviour {
 	public string toggleLeft = "Left";
 	// Button to toggle the flippers to the right (right arrow) 
 	public string toggleRight = "Right";
+	// Button to destroy an Active flipper
+	public string buttonDelete = "Delete";
 
 	// Use this for initialization
 	void Start () {
@@ -56,78 +58,100 @@ public class FlipperGenerator : MonoBehaviour {
 		ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 		if (Physics.Raycast (ray, out hit)) {
-
-			// If the left mouse button is down
-			if (Input.GetKeyDown (KeyCode.Mouse0)) {
-				// Store the position as the start point
-				startPoint = Input.mousePosition;
-			}
-			// If the left mouse button is up after being clicked
-			if (Input.GetKeyUp (KeyCode.Mouse0)) {
-				// Store the mouse position as the end point
-				endPoint = Input.mousePosition;
-				// Calculate the distance between the two points
-				distance = Vector3.Distance (startPoint, endPoint);
-				// Calculate the vector from start point to end point
-				Vector3 direction = endPoint - startPoint;
-				// Calculate the angle of the direction vector by comparing it to our reference vector
-				float angle = Vector3.Angle(direction, angleReference);
-
-				// If the horizontal position of the start point is smaller than the one of the end point
-				if (startPoint.x < endPoint.x) {
-					// If the angle of the vector is less than 90degrees
-					if (angle < 90) {
-						// Modify the Hingejoints limits values
-						limitMinAngle = -90;
-						limitMaxAngle = 0;
-					}
-					// If the angle of the vector is more or equal than 90degrees
-					if (angle >= 90) {
-						// Modify the Hingejoints limits values
-						angle = -angle;
-						limitMinAngle = 0;
-						limitMaxAngle = 90;
-					}
-					// Instantiate in the Flippers List a left Flipper object at the click position, with the angle of the vector 
-					flippersList.Add((GameObject)Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z),   Quaternion.Euler(0, 0, angle)));
-					// Add one to the amount of Flippers
-					amountFlippers++;
-					// Modify the HingeJoint values to the correct ones
-					HingeJoint hj = flippersList[amountFlippers].GetComponent<HingeJoint>();
-					JointLimits limits = hj.limits;
-					limits.min = limitMinAngle;
-					limits.max = limitMaxAngle;
-					hj.limits = limits;
-				}
-
-				// If the horizontal position of the start point is bigger than the one of the end point
-				if (startPoint.x > endPoint.x) {
-					// Instantiate in the Flippers List a right Flipper object at the click position, with the angle of the vector 
-					flippersList.Add((GameObject)Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.Euler(0,0, angle)));
-					amountFlippers++;
-				}
-				// Put the new instantiation as the selected flipper index
-				indexSelected = amountFlippers;
-				// Reset the active flipper
-				ResetActive (indexSelected);
-			}
-				
-	
-			// If the left arrow button is down
-			if (Input.GetButtonUp(toggleLeft) && indexSelected > 0) {
-				// Change the index to the previous one in the list
-				indexSelected--;
-				// Reset the active flipper
-				ResetActive (indexSelected);
-			}
-			// If the right arrow button is down
-			if (Input.GetButtonUp(toggleRight) && indexSelected < amountFlippers) {
-				// Change the index to the next one in the list
-				indexSelected++;
-				// Reset the active flipper
-				ResetActive (indexSelected);
-			}
+			Generate ();
+			Toggle ();	
+			Destroy ();
 		}			
+	}
+
+	//
+	void Generate() {
+		// If the left mouse button is down
+		if (Input.GetKeyDown (KeyCode.Mouse0)) {
+			// Store the position as the start point
+			startPoint = Input.mousePosition;
+		}
+		// If the left mouse button is up after being clicked
+		if (Input.GetKeyUp (KeyCode.Mouse0)) {
+			// Store the mouse position as the end point
+			endPoint = Input.mousePosition;
+			// Calculate the distance between the two points
+			distance = Vector3.Distance (startPoint, endPoint);
+			// Calculate the vector from start point to end point
+			Vector3 direction = endPoint - startPoint;
+			// Calculate the angle of the direction vector by comparing it to our reference vector
+			float angle = Vector3.Angle(direction, angleReference);
+
+			// If the horizontal position of the start point is smaller than the one of the end point
+			if (startPoint.x < endPoint.x) {
+				// If the angle of the vector is less than 90degrees
+				if (angle < 90) {
+					// Modify the Hingejoints limits values
+					limitMinAngle = -90;
+					limitMaxAngle = 0;
+				}
+				// If the angle of the vector is more or equal than 90degrees
+				if (angle >= 90) {
+					// Modify the Hingejoints limits values
+					angle = -angle;
+					limitMinAngle = 0;
+					limitMaxAngle = 90;
+				}
+				// Instantiate in the Flippers List a left Flipper object at the click position, with the angle of the vector 
+				flippersList.Add((GameObject)Instantiate (leftFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z),   Quaternion.Euler(0, 0, angle)));
+				// Add one to the amount of Flippers
+				amountFlippers++;
+				// Modify the HingeJoint values to the correct ones
+				HingeJoint hj = flippersList[amountFlippers].GetComponent<HingeJoint>();
+				JointLimits limits = hj.limits;
+				limits.min = limitMinAngle;
+				limits.max = limitMaxAngle;
+				hj.limits = limits;
+			}
+
+			// If the horizontal position of the start point is bigger than the one of the end point
+			if (startPoint.x > endPoint.x) {
+				// Instantiate in the Flippers List a right Flipper object at the click position, with the angle of the vector 
+				flippersList.Add((GameObject)Instantiate (rightFlipper, new Vector3 (hit.point.x, hit.point.y, channel.transform.position.z), Quaternion.Euler(0,0, angle)));
+				amountFlippers++;
+			}
+			// Put the new instantiation as the selected flipper index
+			indexSelected = amountFlippers;
+			// Reset the active flipper
+			ResetActive (indexSelected);
+		}
+	}
+
+	//
+	void Toggle() {
+		// If the left arrow button is down
+		if (Input.GetButtonUp(toggleLeft) && indexSelected > 0) {
+			// Change the index to the previous one in the list
+			indexSelected--;
+			// Reset the active flipper
+			ResetActive (indexSelected);
+			print (indexSelected);
+		}
+		// If the right arrow button is down
+		if (Input.GetButtonUp(toggleRight) && indexSelected < amountFlippers) {
+			// Change the index to the next one in the list
+			indexSelected++;
+			// Reset the active flipper
+			ResetActive (indexSelected);
+			print (indexSelected);
+		}
+	}
+
+	//
+	void Destroy() {
+		for (int i = 0; i <= amountFlippers; i++) {
+			if (flippersList[i].tag == "Active" && Input.GetButtonDown(buttonDelete)) {
+				ResetActive (i-1);
+				amountFlippers -= 1; 
+				Destroy (flippersList[i].gameObject);
+				flippersList.RemoveAt(i);
+			}
+		}
 	}
 
 	// Void function that resets the active flipper tag by toggling tags
