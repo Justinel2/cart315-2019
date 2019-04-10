@@ -48,5 +48,7 @@ public class GenerateBalls : MonoBehaviour {
 		GameObject ball = Instantiate (neurotransmitter) as GameObject;
 		// Place it at the same position than the channel
 		ball.transform.position = transform.position;
+		// Tag the object "Ball"
+		ball.tag = "Ball";
 	}
 }

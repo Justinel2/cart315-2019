@@ -130,7 +130,7 @@ public class FlipperGenerator : MonoBehaviour {
 			indexSelected--;
 			// Reset the active flipper
 			ResetActive (indexSelected);
-			print (indexSelected);
+//			print (indexSelected);
 		}
 		// If the right arrow button is down
 		if (Input.GetButtonUp(toggleRight) && indexSelected < amountFlippers) {
@@ -138,7 +138,7 @@ public class FlipperGenerator : MonoBehaviour {
 			indexSelected++;
 			// Reset the active flipper
 			ResetActive (indexSelected);
-			print (indexSelected);
+//			print (indexSelected);
 		}
 	}
 
