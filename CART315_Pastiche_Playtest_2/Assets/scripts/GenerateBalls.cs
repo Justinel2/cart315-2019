@@ -34,7 +34,7 @@ public class GenerateBalls : MonoBehaviour {
 	// A function that activates the generation of a group of neurotransmitter in the synapse 
 	//
 	void generateGroup() {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < groupAmount; i++) {
 			Invoke("generateInd", i*1.5f);
 		}
 	}
@@ -47,7 +47,7 @@ public class GenerateBalls : MonoBehaviour {
 		// Instantiate a new neurotransmitter as game object
 		GameObject ball = Instantiate (neurotransmitter) as GameObject;
 		// Place it at the same position than the channel
-		ball.transform.position = transform.position;
+		ball.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		// Tag the object "Ball"
 		ball.tag = "Ball";
 	}

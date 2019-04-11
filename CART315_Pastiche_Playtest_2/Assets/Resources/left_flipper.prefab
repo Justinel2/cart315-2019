@@ -124,10 +124,10 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -90
-    max: 0
+    min: 0
+    max: 90
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 18.5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -158,4 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2303ed47f924cf4a7ff7bbbc792190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: Flipper
+  buttonGenerate: Flipper
+  buttonDelete: Delete

@@ -38,10 +38,6 @@ public class FlipperBehavior : MonoBehaviour {
 				// Activate the flipper motor and activate the gravity
 				this.GetComponent<HingeJoint>().useMotor = true;
 			}
-//			if (Input.GetButtonDown(buttonDelete)) {
-//				print ("loop entered");
-//				Destroy (gameObject);
-//			}
 		}
 		if (this.tag != "Active") {
 			stateColor.color = Color.white;

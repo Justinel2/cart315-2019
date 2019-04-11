@@ -85,7 +85,6 @@ public class BallBehavior : MonoBehaviour {
 				handleBallMovements ();
 			}
 		}
-//		print (rb.velocity);
 	}
 
 	// calculateDistanceBallToPostS
@@ -105,13 +104,14 @@ public class BallBehavior : MonoBehaviour {
 	// A function that verifies if the ball collided with a flipper
 	//
 	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Active") {
-			touchedByFlipper = true;
-			//Add gravity
-			rb.useGravity = true;
-			Physics.IgnoreCollision(postSynaptic.GetComponent<Collider>(), GetComponent<Collider>());
-			controlledVelocity = rb.velocity;
+		if (collision.gameObject.name == "receptor_serotonin") {
+			Destroy (gameObject);
 		}
+		touchedByFlipper = true;
+		//Add gravity
+		rb.useGravity = true;
+		Physics.IgnoreCollision(postSynaptic.GetComponent<Collider>(), GetComponent<Collider>());
+		controlledVelocity = rb.velocity;
 	}
 
 	// handleBallMovements()

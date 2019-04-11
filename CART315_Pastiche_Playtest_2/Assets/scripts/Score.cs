@@ -20,9 +20,9 @@ namespace TMPro.Examples
 
 		public static float timer;
 		public static bool timeStarted = false;
-		private int minutes;
+		public int minutes;
 		private int seconds;
-		public string time;
+		private string time;
 
 		void Start()
 		{
@@ -47,8 +47,6 @@ namespace TMPro.Examples
 
 		void Update()
 		{
-			//			if (timeStarted == true) 
-			//			{
 			timer += Time.deltaTime;
 			minutes = Mathf.FloorToInt(timer / 60F);
 			seconds = Mathf.FloorToInt(timer - minutes * 60);
@@ -60,16 +58,5 @@ namespace TMPro.Examples
 				m_text.SetText(time);
 			}
 		}
-
-//		void OnGUI() {
-//			minutes = Mathf.FloorToInt(timer / 60F);
-//			seconds = Mathf.FloorToInt(timer - minutes * 60);
-//			time = string.Format("{0:0}:{1:00}", minutes, seconds);
-//
-//			GUI.Label(new Rect(10,10,250,100), time);
-//		}
-
-
-
 	}
 }

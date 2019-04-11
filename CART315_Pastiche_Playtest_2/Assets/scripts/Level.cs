@@ -16,10 +16,10 @@ namespace TMPro.Examples
 
 		private TMP_Text m_text;
 
-		private const string k_label = "Serotonin level (ng/mL): <#0080ff>{0}</color>";
+		private string k_label;
 
 		private GameObject receptor;
-		private int levelSerotonin;
+		private float levelSerotonin;
 
 		void Start()
 		{	
@@ -50,6 +50,16 @@ namespace TMPro.Examples
 			{
 				// Get the current score
 				levelSerotonin = receptor.GetComponent<ReceiveBalls> ().level;
+				if (levelSerotonin > 100 && levelSerotonin < 250) {
+					k_label = "Serotonin level (ng/mL): <#0080ff>{0}</color>";
+				}
+				if (levelSerotonin <= 100 || levelSerotonin >= 250) {
+					k_label = "Serotonin level (ng/mL): <#ff0000>{0}</color>";
+				}
+
+				if (levelSerotonin <= 50 || levelSerotonin >= 300) {
+					k_label = "You are dead. Press 'R' to restart.";
+				}
 				// Set text
 				m_text.SetText(k_label, levelSerotonin);
 			}
