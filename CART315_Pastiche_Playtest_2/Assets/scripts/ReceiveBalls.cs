@@ -39,11 +39,11 @@ public class ReceiveBalls : MonoBehaviour {
 		int minutes = Mathf.FloorToInt(timer / 60F);
 		int seconds = Mathf.FloorToInt(timer - minutes * 60);
 		if (seconds % 5 == 0 && seconds > 0) {
-			level += 0.1f;
+			level -= decay;
 		}
 		if (seconds % 59 == 0 && seconds > 0) {
 			scaleX -= 0.01f;
-//			decay += 0.02f;
+			decay += 0.02f;
 			if (scaleX >= 0.5f) {
 				transform.localScale = new Vector3 (scaleX, 1.0f, 1.0f);
 			}
